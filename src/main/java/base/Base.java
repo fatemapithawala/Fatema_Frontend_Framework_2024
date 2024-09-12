@@ -1,5 +1,6 @@
 package base;
 
+import Resources.fatGlobalResources.LoginPageResource;
 import Resources.fatStaticResources.FAT_GLOBAL_STATIC;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
