@@ -1,13 +1,11 @@
 package base;
 
-import fatResources.fatGlobalResources.LoginPageResource;
-import fatResources.fatStaticResources.FAT_GLOBAL_STATIC;
+import Resources.fatStaticResources.FAT_GLOBAL_STATIC;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 

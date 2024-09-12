@@ -1,15 +1,12 @@
 package testOfFramework;
 
 import base.Base;
-import fatResources.fatGlobalResources.LoginPageResource;
-import fatResources.fatStaticResources.FAT_GLOBAL_STATIC;
+import Resources.fatGlobalResources.LoginPageResource;
+import Resources.fatStaticResources.FAT_GLOBAL_STATIC;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Properties;
 
 public class SauceLoginTest extends Base {
 
