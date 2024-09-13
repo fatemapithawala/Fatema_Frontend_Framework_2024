@@ -2,8 +2,9 @@ package testOfFramework;
 
 import Utilities.fatExcelDataUtility.ExcelDataUtility;
 import base.Base;
-import Resources.fatGlobalResources.LoginPageResource;
-import Resources.fatStaticResources.FAT_GLOBAL_STATIC;
+import Resources.GlobalResources.LoginPageResource;
+import Resources.StaticResources.GLOBAL_STATIC;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -15,25 +16,24 @@ public class SauceLoginTest extends Base {
     String validUserName;
     String valdPassword;
 
-    //LoginPageResource login = new LoginPageResource();
+    LoginPageResource login;
 
    @BeforeMethod(alwaysRun = true)
     public void setup() throws IOException, InterruptedException {
-      // LoginPageResource login = new LoginPageResource();
-     launchBrowser();
+       login = launchBrowser();
 
-       // FileInputStream file = new FileInputStream("src/main/java/fatConfig/fatConfig.properties");
+       // FileInputStream file = new FileInputStream("src/main/java/Config/Config.properties");
        // FAT_GLOBAL_STATIC.prop= new Properties();
         //FAT_GLOBAL_STATIC.prop.load(file);
 
        //launchBrowser();
 
    }
-   @Test
-    public void  credentials() throws InterruptedException, IOException {
-     LoginPageResource login = new LoginPageResource();
-      String user1= FAT_GLOBAL_STATIC.prop.getProperty("username");
-      String pass1= FAT_GLOBAL_STATIC.prop.getProperty("password");
+   @Test(priority = 1)
+    public void  getcredentialsFromPropertiesFile() throws InterruptedException, IOException {
+
+      String user1= GLOBAL_STATIC.prop.getProperty("username");
+      String pass1= GLOBAL_STATIC.prop.getProperty("password");
 
       login.userNameAndPassword(user1,pass1);
       
@@ -42,21 +42,21 @@ public class SauceLoginTest extends Base {
       // login.userNameAndPassword("performance_glitch_user","secret_sauce");
    }
 
-   @Test
+   @Test(priority = 2)
     public void getCredentialsFromExcel(){
-       LoginPageResource login2 = new LoginPageResource();
        ExcelDataUtility testData = new ExcelDataUtility("src/main/java/testData/SauceTestData.xlsx");
       validUserName= testData.getCellData("SauceCredentials",2,1);
       valdPassword=testData.getCellData("SauceCredentials",2,2);
-      login2.userNameAndPassword(validUserName,valdPassword);
-
-
-
-
-
-
+      login.userNameAndPassword(validUserName,valdPassword);
 
    }
 
+    @AfterMethod(alwaysRun = true)
+    public void teardown(){
+        GLOBAL_STATIC.driver.close();
+    }
 
 }
+
+
+

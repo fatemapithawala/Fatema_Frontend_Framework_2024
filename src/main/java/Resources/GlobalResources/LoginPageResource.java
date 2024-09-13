@@ -1,6 +1,6 @@
-package Resources.fatGlobalResources;
+package Resources.GlobalResources;
 
-import Resources.fatStaticResources.FAT_GLOBAL_STATIC;
+import Resources.StaticResources.GLOBAL_STATIC;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -9,7 +9,7 @@ public class LoginPageResource {
 
     public LoginPageResource(){
 
-        PageFactory.initElements(FAT_GLOBAL_STATIC.driver,this);
+        PageFactory.initElements(GLOBAL_STATIC.driver,this);
 
     }
 
@@ -31,6 +31,8 @@ public class LoginPageResource {
         xpathOfPasswordTextBox2.sendKeys(password2);
 
     }
+
+
 
 
 

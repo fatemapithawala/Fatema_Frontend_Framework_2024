@@ -1,10 +1,10 @@
-package Resources.fatStaticResources;
+package Resources.StaticResources;
 
 import org.openqa.selenium.WebDriver;
 
 import java.util.Properties;
 
-public class FAT_GLOBAL_STATIC {
+public class GLOBAL_STATIC {
 
     public static WebDriver driver;
     public static Properties prop;

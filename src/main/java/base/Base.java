@@ -1,7 +1,7 @@
 package base;
 
-import Resources.fatGlobalResources.LoginPageResource;
-import Resources.fatStaticResources.FAT_GLOBAL_STATIC;
+import Resources.GlobalResources.LoginPageResource;
+import Resources.StaticResources.GLOBAL_STATIC;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -12,7 +12,7 @@ import java.util.Properties;
 
 public class Base {
 
-    public void launchBrowser() throws IOException {
+    public LoginPageResource launchBrowser() throws IOException {
         loadProperties();
 
       //will decide at runtime frm CMD mvn test command which browser to open.Whatever value provide at the time of runtime in
@@ -24,37 +24,36 @@ public class Base {
         if (br==null){
             //will take the value frm the properties files to the key name "browser"
             //here data (browser) will travel from properties file so we have created object for the class properties
-            br= FAT_GLOBAL_STATIC.prop.getProperty("browser");
+            br= GLOBAL_STATIC.prop.getProperty("browser");
             openSpecificBrowser(br);
         }
 
         else
             openSpecificBrowser(br);
-        FAT_GLOBAL_STATIC.driver.manage().window().maximize();
-        FAT_GLOBAL_STATIC.driver.get(FAT_GLOBAL_STATIC.prop.getProperty("applicationURL"));
+        GLOBAL_STATIC.driver.manage().window().maximize();
+        GLOBAL_STATIC.driver.get(GLOBAL_STATIC.prop.getProperty("applicationURL"));
        // FAT_GLOBAL_STATIC.driver.get(FAT_GLOBAL_STATIC.prop.getProperty("username"));
         //FAT_GLOBAL_STATIC.driver.get(FAT_GLOBAL_STATIC.prop.getProperty("password"));
-
-
+        return new LoginPageResource();
 
     }
 
 
     public void loadProperties() throws IOException {
-        FileInputStream file = new FileInputStream("src/main/java/fatConfig/fatConfig.properties");
-        FAT_GLOBAL_STATIC.prop = new Properties();
-        FAT_GLOBAL_STATIC.prop.load(file);
+        FileInputStream file = new FileInputStream("src/main/java/Config/Config.properties");
+        GLOBAL_STATIC.prop = new Properties();
+        GLOBAL_STATIC.prop.load(file);
     }
 
     public void openSpecificBrowser(String browser) {
         if (browser.equals("Chrome") || browser.equals("chrome")) {
-            FAT_GLOBAL_STATIC.driver = new ChromeDriver();
+            GLOBAL_STATIC.driver = new ChromeDriver();
         }
         if (browser.equals("Edge") || browser.equals("edge")) {
-            FAT_GLOBAL_STATIC.driver = new EdgeDriver();
+            GLOBAL_STATIC.driver = new EdgeDriver();
         }
         if (browser.equals("FireFox") || browser.equals("Firefox")) {
-            FAT_GLOBAL_STATIC.driver = new FirefoxDriver();
+            GLOBAL_STATIC.driver = new FirefoxDriver();
         }
 
     }
