@@ -1,4 +1,4 @@
-package Utilities.fatExcelDataUtility;
+package fatUtilities.fatExcelDataUtility;
 
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.xssf.usermodel.XSSFCell;
